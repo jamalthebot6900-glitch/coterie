@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import VideoHero from "@/components/VideoHero";
 import { motion } from "framer-motion";
-import { images } from "@/lib/images";
 
 const highlights = [
   {
@@ -31,25 +30,8 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src={images.hero}
-            alt="Supercar on European road"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-5xl">
+      <VideoHero src="/videos/kling-alpine.mp4" overlay="bg-black/50">
+        <div className="text-center px-6 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -103,21 +85,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll line */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-        >
-          <span className="text-cream/20 text-[9px] tracking-[0.3em] uppercase">Scroll</span>
-          <motion.div
-            animate={{ scaleY: [0.3, 1, 0.3] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-10 bg-gradient-to-b from-gold/40 to-transparent origin-top"
-          />
-        </motion.div>
-      </section>
+      </VideoHero>
 
       {/* Statement */}
       <section className="py-32 sm:py-40 px-6">
@@ -157,21 +125,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Tour — Full Bleed Image */}
-      <section className="relative h-[80vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={images.dolomites}
-            alt="Italian Dolomites"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
-        </div>
-
-        <div className="relative z-10 h-full flex items-center">
+      {/* Featured Tour — Video */}
+      <VideoHero src="/videos/kling-riviera.mp4" overlay="bg-black/40" className="h-[80vh]">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
+        <div className="relative h-full flex items-center">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
             <FadeIn direction="left">
               <p className="text-gold/60 text-[10px] tracking-[0.4em] uppercase mb-4">
@@ -196,7 +153,7 @@ export default function Home() {
             </FadeIn>
           </div>
         </div>
-      </section>
+      </VideoHero>
 
       {/* Quote */}
       <section className="py-32 sm:py-40 px-6 bg-charcoal/30">
