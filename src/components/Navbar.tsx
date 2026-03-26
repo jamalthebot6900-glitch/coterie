@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { href: "/tours", label: "Experiences" },
@@ -30,9 +31,14 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
         <Link href="/" className="group flex items-center gap-3">
-          <span className="text-cream font-serif text-2xl tracking-[0.15em]">
-            Coterie
-          </span>
+          <Image
+            src="/images/coterie-logo-1.png"
+            alt="Coterie"
+            width={160}
+            height={60}
+            className="h-12 w-auto brightness-0 invert"
+            priority
+          />
         </Link>
 
         <div className="hidden lg:flex items-center gap-12">
