@@ -5,9 +5,9 @@ import FadeIn from "@/components/FadeIn";
 
 const tourOptions = [
   "Italian Dolomites",
-  "French Riviera",
+  "Côte d'Azur — French Riviera",
   "Swiss Grand Tour",
-  "Bespoke / Custom Tour",
+  "Bespoke / Custom Experience",
 ];
 
 export default function Enquire() {
@@ -15,7 +15,6 @@ export default function Enquire() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: integrate with CRM / email service
     setSubmitted(true);
   };
 
@@ -24,17 +23,15 @@ export default function Enquire() {
       <div className="pt-28 pb-20 min-h-screen flex items-center justify-center px-6">
         <FadeIn>
           <div className="text-center max-w-md">
-            <div className="w-16 h-16 border border-gold/30 rounded-full flex items-center justify-center mx-auto mb-8">
-              <svg className="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+            <div className="w-20 h-20 border border-gold/20 rounded-full flex items-center justify-center mx-auto mb-10">
+              <svg className="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-3xl font-light text-cream mb-4">
-              Thank You
-            </h2>
-            <p className="text-cream/40 text-sm leading-relaxed">
-              We&apos;ve received your enquiry and will be in touch within 48 hours to
-              discuss your experience.
+            <h2 className="font-serif text-3xl text-cream mb-4">Thank You</h2>
+            <p className="text-cream/35 text-sm leading-[1.8]">
+              We&apos;ve received your enquiry and will be in touch within 48
+              hours to discuss your experience in detail.
             </p>
           </div>
         </FadeIn>
@@ -43,112 +40,105 @@ export default function Enquire() {
   }
 
   return (
-    <div className="pt-28 pb-20">
-      <div className="max-w-2xl mx-auto px-6">
+    <div className="pt-28 pb-20 min-h-screen">
+      <div className="max-w-[600px] mx-auto px-6">
         <FadeIn>
-          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4">
+          <p className="text-gold/60 text-[10px] tracking-[0.4em] uppercase mb-4">
             Enquire
           </p>
-          <h1 className="text-4xl sm:text-5xl font-light text-cream mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl text-cream mb-6">
             Start Your Journey
           </h1>
-          <p className="text-cream/40 text-base mb-16 max-w-lg">
-            Tell us about yourself and what you&apos;re looking for. All tours are
-            allocated by application — we&apos;ll be in touch to discuss the details.
+          <p className="text-cream/35 text-sm leading-[1.8] mb-16 max-w-md">
+            All experiences are allocated by application. Tell us about yourself
+            and what you&apos;re looking for — we&apos;ll handle the rest.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Name */}
+          <form onSubmit={handleSubmit} className="space-y-10">
             <div>
-              <label className="block text-cream/50 text-xs tracking-widest uppercase mb-3">
+              <label className="block text-cream/30 text-[9px] tracking-[0.25em] uppercase mb-4">
                 Full Name
               </label>
               <input
                 type="text"
                 required
-                className="w-full bg-transparent border-b border-white/10 text-cream py-3 text-sm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-cream/20"
+                className="w-full bg-transparent border-b border-white/[0.08] text-cream py-3 text-sm focus:border-gold/40 focus:outline-none transition-all duration-500 placeholder:text-cream/15"
                 placeholder="Your name"
               />
             </div>
 
-            {/* Email */}
             <div>
-              <label className="block text-cream/50 text-xs tracking-widest uppercase mb-3">
+              <label className="block text-cream/30 text-[9px] tracking-[0.25em] uppercase mb-4">
                 Email Address
               </label>
               <input
                 type="email"
                 required
-                className="w-full bg-transparent border-b border-white/10 text-cream py-3 text-sm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-cream/20"
+                className="w-full bg-transparent border-b border-white/[0.08] text-cream py-3 text-sm focus:border-gold/40 focus:outline-none transition-all duration-500 placeholder:text-cream/15"
                 placeholder="your@email.com"
               />
             </div>
 
-            {/* Phone */}
             <div>
-              <label className="block text-cream/50 text-xs tracking-widest uppercase mb-3">
+              <label className="block text-cream/30 text-[9px] tracking-[0.25em] uppercase mb-4">
                 Phone Number
               </label>
               <input
                 type="tel"
-                className="w-full bg-transparent border-b border-white/10 text-cream py-3 text-sm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-cream/20"
+                className="w-full bg-transparent border-b border-white/[0.08] text-cream py-3 text-sm focus:border-gold/40 focus:outline-none transition-all duration-500 placeholder:text-cream/15"
                 placeholder="+44 7XXX XXX XXX"
               />
             </div>
 
-            {/* Car */}
             <div>
-              <label className="block text-cream/50 text-xs tracking-widest uppercase mb-3">
+              <label className="block text-cream/30 text-[9px] tracking-[0.25em] uppercase mb-4">
                 Your Car
               </label>
               <input
                 type="text"
                 required
-                className="w-full bg-transparent border-b border-white/10 text-cream py-3 text-sm focus:border-gold/50 focus:outline-none transition-colors placeholder:text-cream/20"
+                className="w-full bg-transparent border-b border-white/[0.08] text-cream py-3 text-sm focus:border-gold/40 focus:outline-none transition-all duration-500 placeholder:text-cream/15"
                 placeholder="Make & model (e.g. Porsche 911 GT3)"
               />
             </div>
 
-            {/* Tour Preference */}
             <div>
-              <label className="block text-cream/50 text-xs tracking-widest uppercase mb-3">
-                Preferred Tour
+              <label className="block text-cream/30 text-[9px] tracking-[0.25em] uppercase mb-4">
+                Preferred Experience
               </label>
               <select
                 required
-                className="w-full bg-transparent border-b border-white/10 text-cream py-3 text-sm focus:border-gold/50 focus:outline-none transition-colors appearance-none cursor-pointer"
                 defaultValue=""
+                className="w-full bg-transparent border-b border-white/[0.08] text-cream py-3 text-sm focus:border-gold/40 focus:outline-none transition-all duration-500 appearance-none cursor-pointer"
               >
-                <option value="" disabled className="bg-charcoal text-cream/40">
+                <option value="" disabled className="bg-[#1a1a1a] text-cream/30">
                   Select a tour
                 </option>
                 {tourOptions.map((t) => (
-                  <option key={t} value={t} className="bg-charcoal text-cream">
+                  <option key={t} value={t} className="bg-[#1a1a1a] text-cream">
                     {t}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* Message */}
             <div>
-              <label className="block text-cream/50 text-xs tracking-widest uppercase mb-3">
-                Tell Us About Your Ideal Experience
+              <label className="block text-cream/30 text-[9px] tracking-[0.25em] uppercase mb-4">
+                What are you looking for from a Coterie experience?
               </label>
               <textarea
                 rows={4}
-                className="w-full bg-transparent border-b border-white/10 text-cream py-3 text-sm focus:border-gold/50 focus:outline-none transition-colors resize-none placeholder:text-cream/20"
-                placeholder="What are you looking for from a Coterie experience?"
+                className="w-full bg-transparent border-b border-white/[0.08] text-cream py-3 text-sm focus:border-gold/40 focus:outline-none transition-all duration-500 resize-none placeholder:text-cream/15"
+                placeholder="Tell us a bit about yourself and what excites you about a driving tour..."
               />
             </div>
 
-            {/* Submit */}
-            <div className="pt-4">
+            <div className="pt-6">
               <button
                 type="submit"
-                className="w-full sm:w-auto px-12 py-4 bg-gold text-black text-sm tracking-[0.2em] uppercase font-medium hover:bg-gold-light transition-all duration-300"
+                className="w-full sm:w-auto px-14 py-4 bg-gold text-black text-[11px] tracking-[0.25em] uppercase font-medium hover:bg-gold-light transition-all duration-500"
               >
                 Submit Enquiry
               </button>

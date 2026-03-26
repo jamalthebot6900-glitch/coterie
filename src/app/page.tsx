@@ -1,24 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import { motion } from "framer-motion";
+import { images } from "@/lib/images";
 
 const highlights = [
   {
+    number: "01",
     title: "Curated Routes",
     description:
-      "Handpicked European roads — alpine passes, coastal highways, hidden gems only locals know.",
+      "Handpicked European roads — alpine passes, coastal highways, hidden gems that only locals know. Every corner chosen for a reason.",
   },
   {
-    title: "Seamless Logistics",
+    number: "02",
+    title: "Seamless Luxury",
     description:
-      "Hotels, dining, support vehicles, route planning — every detail handled so you just drive.",
+      "Five-star hotels, Michelin-quality dining, support vehicles, professional photography. Every detail handled so you simply drive.",
   },
   {
-    title: "Like-Minded Company",
+    number: "03",
+    title: "The Right Company",
     description:
-      "Small, curated groups of enthusiasts who share a passion for exceptional experiences.",
+      "Small, carefully curated groups of like-minded enthusiasts. The people you share the road with matter as much as the road itself.",
   },
 ];
 
@@ -27,100 +32,122 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 30% 50%, #1a1a1a 0%, #0a0a0a 60%), linear-gradient(180deg, rgba(201,169,110,0.03) 0%, transparent 40%)",
-          }}
-        />
-
-        {/* Subtle animated grain */}
-        <div className="absolute inset-0 opacity-[0.015]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        }} />
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src={images.hero}
+            alt="Supercar on European road"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Overlays */}
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+        </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div className="relative z-10 text-center px-6 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight text-cream leading-[1.1]">
-              The Drive Is Just
-              <br />
-              <span className="text-gold">the Beginning</span>
-            </h1>
+            <p className="text-gold/80 text-[10px] tracking-[0.4em] uppercase mb-8">
+              Curated Driving Experiences
+            </p>
           </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-serif text-5xl sm:text-6xl lg:text-[80px] font-normal text-cream leading-[1.05] tracking-tight"
+          >
+            The Drive Is Just
+            <br />
+            <em className="text-gold">the Beginning</em>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-8 text-cream/50 text-lg sm:text-xl font-light max-w-2xl mx-auto leading-relaxed"
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mt-8 text-cream/40 text-base sm:text-lg font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Curated European driving experiences for performance car enthusiasts.
-            Exceptional routes. Luxury at every turn. Moments that last.
+            Exceptional European routes. Luxury at every turn.
+            <br className="hidden sm:block" />
+            Moments that last a lifetime.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+            transition={{ duration: 1, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mt-14 flex flex-col sm:flex-row gap-5 justify-center"
           >
             <Link
               href="/enquire"
-              className="px-10 py-4 bg-gold text-black text-sm tracking-[0.2em] uppercase font-medium hover:bg-gold-light transition-all duration-300"
+              className="group px-10 py-4 bg-gold text-black text-[11px] tracking-[0.25em] uppercase font-medium hover:bg-gold-light transition-all duration-500"
             >
               Enquire Now
             </Link>
             <Link
               href="/tours"
-              className="px-10 py-4 border border-cream/20 text-cream/70 text-sm tracking-[0.2em] uppercase hover:border-gold/50 hover:text-gold transition-all duration-300"
+              className="px-10 py-4 border border-cream/15 text-cream/60 text-[11px] tracking-[0.25em] uppercase hover:border-gold/40 hover:text-gold transition-all duration-500"
             >
               View Experiences
             </Link>
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll line */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
+          <span className="text-cream/20 text-[9px] tracking-[0.3em] uppercase">Scroll</span>
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-12 bg-gradient-to-b from-gold/50 to-transparent"
+            animate={{ scaleY: [0.3, 1, 0.3] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-px h-10 bg-gradient-to-b from-gold/40 to-transparent origin-top"
           />
         </motion.div>
       </section>
 
-      {/* Highlights */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Statement */}
+      <section className="py-32 sm:py-40 px-6">
+        <div className="max-w-4xl mx-auto text-center">
           <FadeIn>
-            <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4">
-              Why Coterie
+            <div className="w-8 h-px bg-gold/40 mx-auto mb-12" />
+            <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-cream/80 leading-[1.5] italic">
+              We create experiences for those who understand that the finest
+              moments in life are shared — and that the best roads deserve the
+              best company.
             </p>
-            <h2 className="text-3xl sm:text-4xl font-light text-cream mb-20">
-              More Than a Road Trip
-            </h2>
+            <div className="w-8 h-px bg-gold/40 mx-auto mt-12" />
           </FadeIn>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+      {/* Highlights */}
+      <section className="pb-32 px-6">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0">
             {highlights.map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.15}>
-                <div className="border-t border-gold/20 pt-8">
-                  <h3 className="text-cream text-lg font-light mb-4">
+              <FadeIn key={item.number} delay={i * 0.15}>
+                <div className={`p-10 lg:p-14 border-t border-white/[0.04] ${i < 2 ? "md:border-r md:border-white/[0.04]" : ""}`}>
+                  <span className="text-gold/30 text-[11px] tracking-[0.3em] font-mono">
+                    {item.number}
+                  </span>
+                  <h3 className="font-serif text-xl text-cream mt-4 mb-5">
                     {item.title}
                   </h3>
-                  <p className="text-cream/40 text-sm leading-relaxed">
+                  <p className="text-cream/30 text-sm leading-[1.8]">
                     {item.description}
                   </p>
                 </div>
@@ -130,68 +157,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Visual Break */}
-      <section className="relative h-[60vh] overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 40%, rgba(201,169,110,0.05) 100%)",
-          }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <FadeIn>
-            <div className="text-center px-6">
-              <p className="text-gold/60 text-xs tracking-[0.3em] uppercase mb-6">
-                Next Departure
+      {/* Featured Tour — Full Bleed Image */}
+      <section className="relative h-[80vh] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={images.dolomites}
+            alt="Italian Dolomites"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+        </div>
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
+            <FadeIn direction="left">
+              <p className="text-gold/60 text-[10px] tracking-[0.4em] uppercase mb-4">
+                Featured Experience
               </p>
-              <h2 className="text-4xl sm:text-5xl font-light text-cream mb-6">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-cream mb-6">
                 Italian Dolomites
               </h2>
-              <p className="text-cream/40 text-sm max-w-md mx-auto mb-10">
-                Five days through the most breathtaking alpine passes in northern Italy.
-                Limited to twelve cars.
+              <p className="text-cream/40 text-sm max-w-md leading-[1.8] mb-4">
+                Five days through the most breathtaking alpine passes in
+                northern Italy. The Stelvio. The Sella Ronda. Tre Cime.
+              </p>
+              <p className="text-gold/40 text-xs tracking-wider mb-10">
+                5 Days &middot; 900km &middot; Limited to 12 Cars
               </p>
               <Link
                 href="/enquire"
-                className="px-8 py-3 border border-gold/40 text-gold text-xs tracking-[0.2em] uppercase hover:bg-gold hover:text-black transition-all duration-300"
+                className="inline-block px-8 py-3.5 border border-gold/30 text-gold text-[10px] tracking-[0.25em] uppercase hover:bg-gold hover:text-black transition-all duration-500"
               >
                 Register Interest
               </Link>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* Testimonial / Quote */}
-      <section className="py-32 px-6">
+      {/* Quote */}
+      <section className="py-32 sm:py-40 px-6 bg-charcoal/30">
         <div className="max-w-3xl mx-auto text-center">
           <FadeIn>
-            <svg className="w-8 h-8 text-gold/30 mx-auto mb-8" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6 text-gold/20 mx-auto mb-10"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
-            <blockquote className="text-2xl sm:text-3xl font-light text-cream/80 leading-relaxed">
-              It&apos;s not about the destination. It&apos;s about who you share the road with.
+            <blockquote className="font-serif text-2xl sm:text-3xl text-cream/70 leading-[1.6] italic">
+              It&apos;s not about the destination. It&apos;s about who you share
+              the road with.
             </blockquote>
-            <div className="mt-8 w-12 h-px bg-gold/30 mx-auto" />
+            <div className="mt-10 w-10 h-px bg-gold/20 mx-auto" />
           </FadeIn>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 border-t border-white/5">
+      {/* Final CTA */}
+      <section className="py-28 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <FadeIn>
-            <h2 className="text-3xl sm:text-4xl font-light text-cream mb-6">
+            <p className="text-gold/50 text-[10px] tracking-[0.4em] uppercase mb-6">
+              Begin
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl text-cream mb-6">
               Ready to Experience Coterie?
             </h2>
-            <p className="text-cream/40 text-sm mb-10 max-w-lg mx-auto">
-              Spaces are limited and allocated by application.
-              Tell us about yourself and your car.
+            <p className="text-cream/30 text-sm mb-12 max-w-lg mx-auto leading-[1.8]">
+              Spaces are limited and allocated by application. Tell us about
+              yourself and your car — we&apos;ll take care of the rest.
             </p>
             <Link
               href="/enquire"
-              className="inline-block px-10 py-4 bg-gold text-black text-sm tracking-[0.2em] uppercase font-medium hover:bg-gold-light transition-all duration-300"
+              className="inline-block px-12 py-4 bg-gold text-black text-[11px] tracking-[0.25em] uppercase font-medium hover:bg-gold-light transition-all duration-500"
             >
               Apply Now
             </Link>
